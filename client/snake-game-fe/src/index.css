@@ -1,0 +1,24 @@
+.boardSnake {
+  display: grid;
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: repeat(10, 50px);
+
+ 
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #000;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+
+.cell.fill {
+  background-color: rgb(12, 32, 2);
+  color: yellow;
+}
