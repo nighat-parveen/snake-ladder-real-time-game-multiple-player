@@ -6,6 +6,10 @@ import Board from './board';
 import Dice from './Dice';
 
 const socketPlayer = io('http://localhost:3000', {
+  auth: {
+    // token: localStorage.getItem('token') + '222' //valid token
+    token: localStorage.getItem('token') //valid token
+  },
   withCredentials: true,
 });
 
@@ -34,16 +38,12 @@ const SnakeLadderGame = () => {
       setIsMyTurn(gameState.players[gameState.currentPlayerIndex] === socketPlayer.id);
     });
 
-    socketPlayer.on('disconnects', () => {
-      console.log('disconnected');
-      socketPlayer.disconnect();
-    })
 
-    // return () => {
-    //   socketPlayer.off('gameStateUpdate');
-    //   socketPlayer.off('rollDice');
-    //   socketPlayer.disconnect();
-    // }
+    return () => {
+      // socketPlayer.off('gameStateUpdate');
+      // socketPlayer.off('rollDice');
+      // socketPlayer.disconnect();
+    }
   }, []);
 
   const handleRollDice = () => {
